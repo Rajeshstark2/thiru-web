@@ -1,0 +1,102 @@
+
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Lightning group 1 - top to bottom strike -->
+  <g class="lightning-group-1">
+    <path d="M180 0 L160 120 L190 180 L170 280 L200 350 L180 450" 
+          stroke="#E0115F" 
+          stroke-width="3.5" 
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          filter="url(#glow)">
+      <animate attributeName="stroke-dasharray" values="0,1100;1100,0" dur="3.5s" begin="0s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;1;0.9;0" dur="5s" begin="0s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-width" values="2.5;4.5;2.5" dur="3.5s" begin="0s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Lightning group 2 -->
+  <g class="lightning-group-2">
+    <path d="M750 0 L730 140 L760 210 L740 310 L770 380 L750 480" 
+          stroke="#E0115F" 
+          stroke-width="3.3" 
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          filter="url(#glow)">
+      <animate attributeName="stroke-dasharray" values="0,1250;1250,0" dur="4s" begin="1.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;1;0.9;0" dur="5.5s" begin="1.5s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-width" values="2.3;4.3;2.3" dur="4s" begin="1.5s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Lightning group 3 -->
+  <g class="lightning-group-3">
+    <path d="M480 0 L500 110 L470 190 L490 280 L460 350 L480 450" 
+          stroke="#E0115F" 
+          stroke-width="3.4" 
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          filter="url(#glow)">
+      <animate attributeName="stroke-dasharray" values="0,1350;1350,0" dur="4.5s" begin="2.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;1;0.9;0" dur="6s" begin="2.5s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-width" values="2.4;4.4;2.4" dur="4.5s" begin="2.5s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Lightning group 4 -->
+  <g class="lightning-group-4">
+    <path d="M1050 0 L1030 130 L1060 200 L1040 300 L1070 370 L1050 470" 
+          stroke="#E0115F" 
+          stroke-width="3.2" 
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          filter="url(#glow)">
+      <animate attributeName="stroke-dasharray" values="0,1450;1450,0" dur="4.2s" begin="0.8s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;1;0.9;0" dur="5.8s" begin="0.8s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-width" values="2.2;4.2;2.2" dur="4.2s" begin="0.8s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Lightning group 5 -->
+  <g class="lightning-group-5">
+    <path d="M250 0 L230 150 L260 220 L240 320 L270 390 L250 490" 
+          stroke="#E0115F" 
+          stroke-width="3.3" 
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          filter="url(#glow)">
+      <animate attributeName="stroke-dasharray" values="0,1550;1550,0" dur="4.7s" begin="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;1;0.9;0" dur="6.2s" begin="2s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-width" values="2.3;4.3;2.3" dur="4.7s" begin="2s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Additional lightning group 6 -->
+  <g class="lightning-group-6">
+    <path d="M850 0 L870 120 L840 200 L860 290 L830 360 L850 460" 
+          stroke="#E0115F" 
+          stroke-width="3.4" 
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          filter="url(#glow)">
+      <animate attributeName="stroke-dasharray" values="0,1650;1650,0" dur="4.3s" begin="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;1;0.9;0" dur="5.5s" begin="3s" repeatCount="indefinite"/>
+      <animate attributeName="stroke-width" values="2.4;4.4;2.4" dur="4.3s" begin="3s" repeatCount="indefinite"/>
+    </path>
+  </g>
+
+  <!-- Enhanced glow effect for better visibility -->
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feFlood flood-color="#E0115F" flood-opacity="0.9" result="glow" />
+      <feComposite in="glow" in2="blur" operator="in" result="glowBlur" />
+      <feBlend in="SourceGraphic" in2="glowBlur" mode="screen" />
+    </filter>
+  </defs>
+</svg>

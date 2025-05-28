@@ -1,0 +1,427 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+@layer base {
+  /* Dark mode (default) */
+  :root, .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+
+    --card: 0 0% 3%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 0 0% 3%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 338 87% 47%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 9%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 63%;
+
+    --accent: 338 87% 47%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 338 87% 47%;
+    --input: 338 87% 47%;
+    --ring: 338 87% 47%;
+
+    --radius: 0.5rem;
+    
+    /* Updated neon-red color to ruby red */
+    --neon-red: 338, 87%, 47%;
+  }
+
+  /* Light mode */
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 338 87% 47%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 100%;
+    --secondary-foreground: 0 0% 0%;
+
+    --muted: 0 0% 100%;
+    --muted-foreground: 0 0% 0%;
+
+    --accent: 338 87% 47%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 338 87% 47%;
+    --input: 338 87% 47%;
+    --ring: 338 87% 47%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Theme-specific styles */
+  .dark {
+    @apply bg-black text-white;
+  }
+
+  .light {
+    @apply bg-white text-black;
+  }
+
+  /* Glass card styles */
+  .glass-card {
+    @apply dark:bg-black/80 light:bg-white backdrop-blur-md border-2 border-white/60 dark:border-white/60 light:border-neon-red/60 transition-all duration-300;
+  }
+
+  .glass-card:hover {
+    /* Removed background, border, and text color change on hover for the main glass-card */
+    box-shadow: 0 0 15px rgba(224, 17, 95, 0.9);
+  }
+
+  .glass-card-about {
+    @apply dark:bg-black/80 light:bg-white backdrop-blur-md border-2 border-neon-redBright transition-all duration-300;
+  }
+
+  .glass-card-about:hover {
+    @apply border-neon-red;
+    box-shadow: 0 0 20px rgba(224, 17, 95, 0.5);
+  }
+
+  /* Lightning effect styles */
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    @apply dark:bg-black light:bg-white;
+  }
+
+  body > canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.7;
+  }
+
+  /* Scrollbar styles */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply dark:bg-black light:bg-white;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-neon-redBright rounded-full;
+  }
+
+  /* Text styles */
+  .blurred-text {
+    @apply text-neon-red/10 font-display font-black text-[100px] md:text-[180px] lg:text-[250px] 
+      select-none uppercase absolute -z-10 opacity-30 blur-sm;
+  }
+
+  .light .blurred-text {
+    @apply text-neon-red/20;
+  }
+
+  /* Animations */
+  @keyframes lightning-flash {
+    0%, 89%, 92%, 100% {
+      opacity: 0.2;
+    }
+    90%, 91% {
+      opacity: 0.8;
+    }
+  }
+  
+  @keyframes flicker {
+    0%, 100% {
+      opacity: 1;
+    }
+    8%, 22% {
+      opacity: 0.95;
+    }
+    30%, 36% {
+      opacity: 0.85;
+    }
+    82%, 97% {
+      opacity: 0.98;
+    }
+  }
+  
+  .animate-flicker {
+    animation: flicker 5s infinite;
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 15px rgba(224, 17, 95, 0.8);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(224, 17, 95, 1);
+    }
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s infinite;
+  }
+}
+
+@layer components {
+  /* Enhanced glow effects with new ruby red color */
+  .neon-red-glow {
+    text-shadow: 0 0 10px rgba(224, 17, 95, 0.9), 
+                 0 0 20px rgba(224, 17, 95, 0.7), 
+                 0 0 30px rgba(224, 17, 95, 0.5);
+  }
+
+  .neon-red-box {
+    box-shadow: 0 0 10px rgba(224, 17, 95, 0.8), 
+                0 0 20px rgba(224, 17, 95, 0.6);
+  }
+
+  .neon-red-border {
+    @apply border-2 border-neon-red;
+    box-shadow: 0 0 10px rgba(224, 17, 95, 0.8), 
+                inset 0 0 10px rgba(224, 17, 95, 0.6);
+  }
+
+  /* Improved glass card effects with stronger hover */
+  .glass-card-red {
+    @apply dark:bg-black/80 backdrop-blur-md border-2 border-neon-redBright transition-all duration-300;
+  }
+
+  /* Use the proper light variant selector */
+  .light .glass-card-red {
+    @apply bg-white/95 backdrop-blur-md border-2 border-neon-redBright;
+    box-shadow: 0 0 15px rgba(224, 17, 95, 0.7);
+  }
+  
+  .glass-card-red:hover {
+    @apply bg-neon-red border-neon-red text-white;
+    box-shadow: 0 0 20px rgba(224, 17, 95, 1), 
+                inset 0 0 10px rgba(224, 17, 95, 0.8);
+    transform: translateY(-5px);
+  }
+
+  /* New card styles for Skills section */
+  .glass-card-skill {
+    @apply dark:bg-black/80 backdrop-blur-md border border-neon-red/50 transition-all duration-300;
+  }
+
+  .light .glass-card-skill {
+    @apply bg-white border-neon-red/30;
+  }
+  
+  .glass-card-skill:hover {
+    @apply border-neon-red;
+    transform: translateY(-3px);
+  }
+
+  /* New card styles for Contact section */
+  .glass-card-contact {
+    @apply dark:bg-black/80 backdrop-blur-md border border-neon-red/50 transition-all duration-300;
+  }
+
+  .light .glass-card-contact {
+    @apply bg-white border-neon-red/30;
+  }
+  
+  .glass-card-contact:hover {
+    @apply border-neon-red;
+    transform: translateY(-3px);
+  }
+
+  /* Keep existing hover-lightning */
+  .hover-lightning:hover::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/lightning.svg');
+    background-size: cover;
+    animation: lightning-flash 2s;
+    z-index: -1;
+    opacity: 0.5;
+  }
+
+  /* Light mode adjustments for hover-lightning with enhanced flash */
+  .light .hover-lightning:hover::after {
+    filter: brightness(1.5) contrast(2.5) saturate(2);
+    opacity: 0.9;
+    animation: lightning-flash-light 1.5s;
+  }
+
+  @keyframes lightning-flash-light {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    10%, 20% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    30%, 50% {
+      opacity: 0.8;
+      transform: scale(1.02);
+    }
+    60%, 80% {
+      opacity: 1;
+      transform: scale(1.03);
+    }
+    90% {
+      opacity: 0.5;
+      transform: scale(1);
+    }
+  }
+
+  .ripple-button {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ripple-button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    opacity: 0;
+    transition: transform 0.6s, opacity 0.6s;
+  }
+
+  .ripple-button:active::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.4;
+  }
+
+  /* Enhanced skill bars with new ruby red color and animation */
+  .skill-bar {
+    @apply h-8 relative overflow-hidden rounded-md;
+  }
+
+  .skill-progress-bar {
+    width: 0;
+    transform-origin: left;
+  }
+
+  @keyframes progressAnimation {
+    from {
+      width: 0;
+      opacity: 0.5;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .skill-bar::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(224, 17, 95, 0.9), rgba(224, 17, 95, 1));
+    animation: pulse-glow 2s infinite ease-in-out;
+  }
+
+  .card-hover-effect {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card-hover-effect:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(224, 17, 95, 1), 
+                0 0 30px rgba(224, 17, 95, 0.9);
+    @apply bg-neon-red text-white;
+  }
+}
+
+/* Remove all thunder-related styles */
+.thunder-bg {
+  position: relative;
+  background-color: #000;
+  overflow: hidden;
+}
+
+.light .thunder-bg {
+  background-color: #f5f5f7;
+}
+
+@keyframes flash {
+  0% {
+    opacity: 1;
+    background: transparent;
+  }
+  10% {
+    opacity: 0.3;
+    background: rgba(255, 255, 255, 0.8);
+  }
+  20% {
+    opacity: 0.5;
+    background: rgba(255, 255, 255, 0.4);
+  }
+  30% {
+    opacity: 0.7;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    opacity: 1;
+    background: transparent;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out forwards;
+  }
+}
