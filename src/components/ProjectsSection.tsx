@@ -57,10 +57,68 @@ const gameProjects = [
   }
 ];
 
-const allProjects = [...webProjects, ...gameProjects];
+// Define Artwork Projects
+const artworkProjects = [
+  {
+    title: 'For Client',
+    image: '/lovable-uploads/duo.jpg', // Replace with actual image path
+    demoLink: '#', // No live demo for art, maybe a gallery link later?
+    category: 'artwork'
+  },
+  {
+    title: 'For Client',
+    image: '/lovable-uploads/rohithsakka.jpg', // Replace with actual image path
+    demoLink: '#', // No live demo for art, maybe a gallery link later?
+    category: 'artwork'
+  },
+  {
+    title: 'Passionate work',
+    image: '/lovable-uploads/vijay2.jpg', // Replace with actual image path
+    demoLink: '#', // No live demo for art, maybe a gallery link later?
+    category: 'artwork'
+  },
+  {
+    title: 'For Client',
+    image: '/lovable-uploads/mega.jpg', // Replace with actual image path
+    demoLink: '#', // No live demo for art, maybe a gallery link later?
+    category: 'artwork'
+  },
+  {
+    title: 'Passionate work',
+    image: '/lovable-uploads/kamal.jpg', // Replace with actual image path
+    demoLink: '#', // No live demo for art, maybe a gallery link later?
+    category: 'artwork'
+  },
+  {
+    title: 'Passionate work',
+    image: '/lovable-uploads/shiva.jpg', // Replace with actual image path
+    demoLink: '#', // No live demo for art, maybe a gallery link later?
+    category: 'artwork'
+  },
+  {
+    title: 'For Client',
+    image: '/lovable-uploads/pradhik.jpg', // Replace with actual image path
+    demoLink: '#', // No live demo for art, maybe a gallery link later?
+    category: 'artwork'
+  },
+  {
+    title: 'Passionate work',
+    image: '/lovable-uploads/vijay (3).jpg', // Replace with actual image path
+    demoLink: '#', // No live demo for art, maybe a gallery link later?
+    category: 'artwork'
+  },
+  {
+    title: 'For Client',
+    image: '/lovable-uploads/inba.jpg', // Replace with actual image path
+    demoLink: '#',
+    category: 'artwork'
+  }
+];
+
+const allProjects = [...webProjects, ...gameProjects, ...artworkProjects];
 
 const ProjectsSection = () => {
-  const [category, setCategory] = React.useState('all');
+  const [category, setCategory] = React.useState('web');
   
   const filteredProjects = category === 'all' 
     ? allProjects 
@@ -78,16 +136,6 @@ const ProjectsSection = () => {
           </h2>
           
           <div className="flex justify-center mb-12 space-x-4">
-            <button 
-              onClick={() => setCategory('all')}
-              className={`px-4 py-2 font-montserrat rounded-lg transition-all duration-300 ${
-                category === 'all' 
-                  ? 'bg-neon-red text-white neon-red-glow' 
-                  : 'text-foreground/70 hover:text-foreground hover:bg-neon-red'
-              }`}
-            >
-              All
-            </button>
             <button 
               onClick={() => setCategory('web')}
               className={`px-4 py-2 font-montserrat rounded-lg transition-all duration-300 ${
@@ -108,6 +156,16 @@ const ProjectsSection = () => {
             >
               Games
             </button>
+            <button 
+              onClick={() => setCategory('artwork')}
+              className={`px-4 py-2 font-montserrat rounded-lg transition-all duration-300 ${
+                category === 'artwork' 
+                  ? 'bg-neon-red text-white neon-red-glow' 
+                  : 'text-foreground/70 hover:text-foreground hover:bg-neon-red'
+              }`}
+            >
+              Artworks
+            </button>
             </div>
           </div>
           
@@ -117,52 +175,66 @@ const ProjectsSection = () => {
                 key={index} 
                 className="glass-card-red rounded-xl overflow-hidden card-hover-effect group"
               >
-                <div className="h-48 overflow-hidden relative">
+                <div className={`overflow-hidden relative ${project.category === 'artwork' ? 'h-[30rem]' : 'h-48'}`}>
                   <img 
                     src={project.image} 
                     alt={project.title} 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className={`w-full h-full transition-transform duration-500 group-hover:scale-110 ${project.category === 'artwork' ? 'object-contain' : 'object-cover'}`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 dark:from-black/80 light:from-black/60 to-transparent group-hover:from-neon-red/80"></div>
                 </div>
                 
-                <div className="p-6">
+                <div className={`px-6 ${project.category === 'artwork' ? 'pt-2 pb-2' : 'py-6'}`}>
                   <h3 className="font-orbitron text-xl text-foreground neon-red-glow mb-2">
                     {project.title}
                   </h3>
                   
-                  <p className="text-foreground/70 dark:text-white/70 light:text-black/80 text-sm mb-4 group-hover:text-white">
-                    {project.description}
+                  <p className={`text-foreground/70 dark:text-white/70 light:text-black/80 text-sm group-hover:text-white ${project.category === 'artwork' ? 'mb-0' : 'mb-4'}`}>
+                    {project.description ? project.description : ''}
                   </p>
                   
                   <div className="flex justify-between items-center">
-                    <span className="text-xs text-foreground/50 font-montserrat group-hover:text-white">
-                      {project.category === 'web' ? 'Web Project' : 'Game'}
+                    <span className={`font-montserrat group-hover:text-white ${project.category === 'artwork' ? 'text-sm' : 'text-xs text-foreground/50'}`}>
+                      {project.category === 'web' ? 'Web Project' : project.category === 'game' ? 'Game' : 'Artwork'}
                     </span>
                     
-                    <a 
-                      href={project.demoLink} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="ripple-button flex items-center font-orbitron text-white text-sm bg-black/50 dark:bg-black/50 light:bg-black/70 px-3 py-2 rounded hover:bg-neon-red transition-all duration-300"
-                    >
-                      {project.category === 'web' ? (
-                        <>
-                          <ExternalLink size={14} className="mr-2" />
-                          Live Demo
-                        </>
-                      ) : (
-                        <>
-                          <Github size={14} className="mr-2" />
-                          Download
-                        </>
-                      )}
-                    </a>
+                    {project.category !== 'artwork' && (
+                      <a 
+                        href={project.demoLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="ripple-button flex items-center font-orbitron text-white text-sm bg-black/50 dark:bg-black/50 light:bg-black/70 px-3 py-2 rounded hover:bg-neon-red transition-all duration-300"
+                      >
+                        {project.category === 'web' ? (
+                          <>
+                            <ExternalLink size={14} className="mr-2" />
+                            Live Demo
+                          </>
+                        ) : (
+                          <>
+                            <Github size={14} className="mr-2" />
+                            Download
+                          </>
+                        )}
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
             ))}
           </div>
+
+          {/* Artwork Contact Button - Only shown when artwork category is selected */}
+          {category === 'artwork' && (
+            <div className="mt-12 text-center">
+              <a 
+                href="#contact" 
+                className="inline-block glass-card-red px-8 py-4 rounded-lg text-white font-orbitron text-lg hover:bg-neon-red transition-all duration-300"
+              >
+                Get Your Artwork Done
+              </a>
+            </div>
+          )}
         </div>
       </FadeInSection>
     </section>

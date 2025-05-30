@@ -52,7 +52,7 @@ const ProcessSection = () => {
       <FadeInSection>
         <div className="max-w-5xl mx-auto relative z-10 px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-4 neon-red-glow">
+          <h2 className="text-4xl md:text-5xl lg:text-5xl font-display font-bold text-white mb-4 neon-red-glow">
             My Working Process
           </h2>
           <div className="w-24 h-1 bg-neon-red mx-auto"></div>

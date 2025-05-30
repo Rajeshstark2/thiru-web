@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { User, MapPin, Briefcase, Building, Languages, Calendar, Trophy, Users, Rocket, Code, BookOpen, Palette } from 'lucide-react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import Autoplay from 'embla-carousel-autoplay';
@@ -11,12 +11,13 @@ const AboutSection = () => {
     "/lovable-uploads/7413fd21-6612-442c-bf82-af782d557067.png",
     "/lovable-uploads/b83b490f-19ad-4dbb-ae6e-913fc15f9899.png",
     "/lovable-uploads/4ffa7d46-20ee-4d60-a362-b3c38492d290.png",
-    "/lovable-uploads/543223c6-8766-49aa-9525-fb33173c2619.png"
+    "/lovable-uploads/543223c6-8766-49aa-9525-fb33173c2619.png",
+    "/lovable-uploads/ifetmeet.jpg"
   ];
 
   const quickFacts = [
     { icon: User, label: "Name", value: "Thirumoorthy Murugadoss" },
-    { icon: MapPin, label: "Location", value: "India" },
+    { icon: MapPin, label: "Location", value: "Blue Marble" },
     { icon: Briefcase, label: "Role", value: "AI Developer, Artist & Founder" },
     { icon: Building, label: "Company", value: "Founder (ScaleVel) & CEO (StarkCloudie and CosmoTec)" },
     { icon: Languages, label: "Languages", value: "English, Tamil" },
@@ -27,37 +28,34 @@ const AboutSection = () => {
     {
       year: "2020",
       icon: Palette,
-      title: "Freelancing Journey as a Graphic Artist",
-      description: "I officially began freelancing by offering my hyper-realistic graphite pencil artwork as a professional service. With over 12 years of experience, I create lifelike portraits and detailed custom illustrations that capture emotion and essence. This marks a major step in turning passion into profession—earning through art while connecting with people through timeless, hand-drawn pieces."
+      title: "Started offering hyper-realistic graphite portraits professionally, turning 12+ years of passion into paid art.",
     },
     {
       year: "2021",
       icon: BookOpen,
-      title: "Started Self Improvement Path",
-      description: "I started diving into self-improvement books across productivity, habit-building, communication, finance, and mindset. This journey is about more than learning—it's about transformation, applying insights from top thinkers to grow personally and professionally."
+      title: "Began deep exploration of self-help books on habits, mindset, productivity, finance, and communication.",
     },
     {
       year: "2022",
       icon: Code,
-      title: "Technical Mastery",
-      description: "I've been learning Python to sharpen my programming and problem-solving skills. Alongside, I explored 2D game development with C#, completing projects like Delivery Man and Skateboarder, gaining hands-on experience with game physics, player mechanics, and creative implementation."
+      title: "Learned Python and built 2D games like Delivery Man and Skateboarder using C# and game development principles.",
     },
     {
       year: "2023 - 2024",
       icon: Rocket,
-      title: "Founded Scalevel",
-      description: "I founded Scalevel, a digital solutions agency focused on growing brands online. We offer website development, social media marketing, and content strategies to improve digital presence, streamline operations, and drive engagement."
+      title: "Established Scalevel, a digital agency delivering websites, social media marketing, and content strategies.",
     },
     {
       year: "2025",
       icon: Users,
-      title: "Team Building & Knowledge Sharing",
-      description: "We've organized community meetups to share insights, connect with like-minded individuals, and grow as a team. These sessions have been key to building a dedicated team aligned by a common vision and passion for growth."
+      title: "Team & Community: Led knowledge-sharing meetups to connect with creators and build a growth-driven, purpose-aligned team.",
     }
   ];
 
   // Use useRef to track milestone elements for animation
   const milestoneRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const [lastMilestoneHeight, setLastMilestoneHeight] = useState('0px');
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -118,11 +116,12 @@ const AboutSection = () => {
               <CarouselContent>
                 {profileImages.map((image, index) => {
                   const imageTexts = [
-                    "Thiru",
+                    "Thirumoorthy Murugadoss⚡",
                     "Skill xploration Meet 2025",
                     "Skill xploration Meet 2025",
                     "Winnings in BasketBall and Athletic events",
-                    "BasketBall Winners of Annual sports day 2025"
+                    "BasketBall Winners of Annual sports day 2025",
+                    "Gen Next Vision 2025 - IFET project fest"
                   ];
                   
                   return (
@@ -134,11 +133,12 @@ const AboutSection = () => {
                             alt={`Profile ${index + 1}`}
                             className="absolute inset-0 w-full h-full object-contain rounded-lg shadow-lg"
                           />
-                          <div className="absolute top-4 left-4 bg-black/60 px-4 py-2 rounded-lg">
-                            <span className="text-white font-display text-lg font-semibold">
-                              {imageTexts[index]}
-                            </span>
-                          </div>
+                        </div>
+                        {/* Text Description Below Image */}
+                        <div className="mt-4 text-center">
+                          <span className="text-white font-display text-lg font-semibold">
+                            {imageTexts[index]}
+                          </span>
                         </div>
                       </div>
                     </CarouselItem>
@@ -179,36 +179,42 @@ const AboutSection = () => {
                 <h3 className="text-xl font-display font-semibold text-neon-red group-hover:text-white transition-colors duration-300 mb-4">My Story</h3>
                 <div className="space-y-4">
                   <p className="text-base leading-relaxed text-foreground dark:text-white light:text-gray-800 font-sans group-hover:text-white transition-colors duration-300">
-                    I'm a passionate developer who loves creating innovative solutions that bridge technology and creativity. 
-                    With a keen eye for detail and a drive for excellence, I transform ideas into powerful digital experiences. 
-                    My journey in tech has been fueled by curiosity and a constant desire to push boundaries.
-                  </p>
-                  
-                  <p className="text-base leading-relaxed text-foreground dark:text-white light:text-gray-800 font-sans group-hover:text-white transition-colors duration-300">
-                    When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects, 
-                    or sharing knowledge with the developer community. I believe in the power of collaboration and 
-                    continuous learning to create meaningful impact.
+                    In 6th grade, my brother said software engineering was cool and planned to pursue it. That comment sparked my interest, and I began exploring tech on my own
+                    through videos and small projects. Over time, my curiosity grew into a passion. By 11th grade, I chose Computer Science as my stream. That decision marked a 
+                    key step in turning inspiration into action. Scroll down to see where it led me.
                   </p>
                 </div>
               </div>
             </div>
 
             {/* Key Milestones Section - Timeline */}
-            <div className="lg:col-span-3">
+            <div id="key-milestones" className="lg:col-span-3">
                 <div className="rounded-xl">
-                  <h3 className="text-xl font-display font-semibold text-neon-red mb-10 text-center">Key Milestones</h3>
+                  <h3 className="text-4xl font-display font-semibold text-white mb-10 text-center">Key Milestones</h3>
                 
                 {/* Timeline Container */}
                   <div className="relative py-12">
                   {/* Central Vertical Line */}
-                  <div className="absolute top-0 bottom-0 left-1/2 transform -translate-x-1/2 w-0.5 bg-neon-red/30 dark:bg-neon-red/50"></div>
+                  <div 
+                    className="absolute top-0 left-1/2 transform -translate-x-1/2 w-0.5 bg-neon-red/30 dark:bg-neon-red/50"
+                    style={{ height: lastMilestoneHeight }}
+                  ></div>
 
                   {milestones.map((milestone, index) => {
                       const isEven = index % 2 === 0;
                     return (
                       <div 
                         key={index} 
-                          ref={el => { milestoneRefs.current[index] = el; }}
+                          ref={el => { 
+                            milestoneRefs.current[index] = el;
+                            if (index === milestones.length - 1 && el) {
+                              // Calculate the height needed for the vertical line up to the bottom of the last milestone
+                              const containerTop = el.parentElement?.getBoundingClientRect().top || 0;
+                              const lastMilestoneBottom = el.getBoundingClientRect().bottom;
+                              const newHeight = lastMilestoneBottom - containerTop;
+                              setLastMilestoneHeight(`${newHeight}px`);
+                            }
+                          }}
                           className="flex flex-col md:grid md:grid-cols-[1fr_auto_1fr] w-full opacity-0 mb-10 md:mb-20 items-center"
                           style={{ opacity: 0, animationDelay: `${index * 0.2}s` }}
                       >
@@ -219,16 +225,13 @@ const AboutSection = () => {
                          </div>
 
                           {/* Content Card */}
-                          <div className={`w-full ${isEven ? 'md:col-start-1 md:col-end-2 md:text-right' : 'md:col-start-3 md:col-end-4 md:text-left'}`}>
-                             <div className="glass-card-about p-4 rounded-lg border border-neon-red w-full">
-                                 <h4 className="font-semibold text-foreground dark:text-white light:text-gray-800 mb-1 font-sans text-lg">
-                               {milestone.title}
-                            </h4>
-                              <p className="text-base text-muted-foreground dark:text-gray-300 light:text-gray-600 font-sans">
-                              {milestone.description}
-                            </p>
-                           </div>
-                        </div>
+                          <div className={`w-full md:col-span-1 ${isEven ? 'md:col-start-1 md:text-right' : 'md:col-start-3 md:text-left'}`}>
+                            <div className="glass-card-about p-4 rounded-xl group hover:bg-neon-red/95 hover:border-neon-red hover:shadow-[0_0_25px_rgba(224,17,95,0.9)] hover:translate-y-[-5px] transition-all duration-300">
+                              <p className="text-base leading-relaxed text-foreground dark:text-white light:text-gray-800 font-sans group-hover:text-white transition-colors duration-300">
+                                {milestone.title}
+                              </p>
+                            </div>
+                          </div>
                       </div>
                     );
                   })}

@@ -54,6 +54,9 @@ const ContactSection = () => {
                 <p className="text-neon-red group-hover:text-white transition-colors duration-300 font-montserrat font-semibold">
                   thirumoorthy07dj@gmail.com
                 </p>
+                <p className="text-neon-red group-hover:text-white transition-colors duration-300 font-montserrat font-semibold">
+                  +91 9360231772
+                </p>
               </div>
               
               <p className="text-foreground/70 group-hover:text-white/80 transition-colors duration-300 text-sm">
@@ -97,7 +100,7 @@ const ContactSection = () => {
                     className={`w-full px-4 py-2 rounded-lg bg-black/20 dark:bg-black/20 light:bg-white/20 border-2 border-neon-red/50 focus:border-neon-red focus:outline-none transition-colors duration-300 ${
                       theme === 'light' ? 'text-gray-800 group-hover:text-white' : 'text-white group-hover:text-white'
                     }`}
-                    placeholder="John Doe"
+                    placeholder="Name"
                   />
                 </div>
 
@@ -113,7 +116,19 @@ const ContactSection = () => {
                     className={`w-full px-4 py-2 rounded-lg bg-black/20 dark:bg-black/20 light:bg-white/20 border-2 border-neon-red/50 focus:border-neon-red focus:outline-none transition-colors duration-300 ${
                       theme === 'light' ? 'text-gray-800 group-hover:text-white' : 'text-white group-hover:text-white'
                     }`}
-                    placeholder="john@example.com"
+                    placeholder="@example.com"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label htmlFor="meeting-time" className="text-sm font-medium text-foreground/80 group-hover:text-white/90 transition-colors duration-300">
+                    Preferred Meeting Date and Time
+                  </label>
+                  <input
+                    type="datetime-local"
+                    name="meeting-time"
+                    id="meeting-time"
+                    className={`w-full px-4 py-2 rounded-lg bg-black/20 dark:bg-black/20 light:bg-white/20 border-2 border-neon-red/50 focus:border-neon-red focus:outline-none transition-colors duration-300 ${theme === 'light' ? 'text-gray-800 group-hover:text-white' : 'text-white group-hover:text-white'}`}
                   />
                 </div>
 
@@ -178,7 +193,7 @@ const ContactSection = () => {
            <h3 className="font-orbitron text-3xl md:text-4xl font-bold text-foreground dark:neon-red-glow mb-10">
             Follow Me
           </h3>
-          <div className="flex justify-center space-x-8 md:space-x-12">
+          <div className="flex justify-center space-x-4 md:space-x-8">
             {/* GitHub Link Button */}
             <a 
               href="https://github.com/Thirumoorthy07" 
